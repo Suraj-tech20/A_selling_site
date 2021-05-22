@@ -1,0 +1,12 @@
+<%-include('../partials/header') %>
+    <div>
+        <h2>Add new comment to
+            <%=product.name %>
+        </h2>
+    </div>
+
+    <form action="/products/<%=product._id %>/comments" method="post">
+        <input type="text" name="comment[text]" placeholder="Enter comments">
+        <input type="submit" value="Submit">
+    </form>
+    <%-include('../partials/footer') %>

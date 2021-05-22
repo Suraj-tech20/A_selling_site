@@ -1,0 +1,7 @@
+<%-include('../partials/header') %>
+    <h2>Edit comment</h2>
+    <form action="/products/<%=id %>/comments/<%= comment._id %>?_method=PUT" method="post">
+        <input type="text" name="comment[text]" value="<%= comment.text %>">
+        <input type="submit" value="Submit">
+    </form>
+    <%-include('../partials/footer') %>

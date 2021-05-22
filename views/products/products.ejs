@@ -1,0 +1,28 @@
+<%-include('../partials/header') %>
+    <div class="container">
+        <div class="thumb">
+            <div class=""><img src="/image/deal.png" alt=""> TheSpot</div>
+            <div class="fs-5 mx-3">A Selling Site...</div>
+        </div>
+        <div class="fs-1 mt-5" id="mycol">Here is list of all items</div>
+
+        <div class="row">
+            <% for (let i = 0; i< products.length; i++) {  %>
+                <div class="col-md-4 col-sm-6 col-xl-3 my-5">
+
+                    <div class="card">
+                        <img src="<%= products[i].url %>" class="card-img-top" alt="loading..">
+                        <div class="card-body text-center">
+                            <h5 class="card-title" id="mycol">
+                                <%= products[i].name %>
+                            </h5>
+                            <p class="card-text" id="mycol">
+                                <%= products[i].description.substring(0,10) %>...</p>
+                            <a class="btn btn-success" href="/products/<%= products[i]._id %>">More info</a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+    <%-include('../partials/footer') %>

@@ -1,0 +1,9 @@
+<%-include('../partials/header') %>
+    <form action="/products" method="post">
+        <input type="text" name="product[name]" placeholder="Name or Title">
+        <input type="number" name="product[price]" placeholder="price">
+        <input type="text" name="product[url]" placeholder="image url">
+        <textarea name="product[description]" id="" cols="30" rows="10" placeholder="Details about product"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+    <%-include('../partials/footer') %>

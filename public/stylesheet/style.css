@@ -1,0 +1,48 @@
+.thumb {
+    background-color: rgb(236, 209, 183);
+    padding: 100px 100px;
+    margin: 15px 0;
+    border-radius: 20px;
+    font-size: 10vmin;
+    color: rgb(17, 94, 94);
+}
+
+.thumb>div>img {
+    width: 9vmin;
+}
+
+.card-body {
+    background-color: rgb(243, 234, 217);
+}
+
+#navbar {
+    background-color: rgb(17, 94, 94)!important;
+}
+
+#mycol {
+    color: rgb(17, 94, 94);
+}
+
+#mycol.fs-1 {
+    text-decoration: underline;
+}
+
+#mybtn {
+    color: rgb(236, 209, 183);
+    border-color: rgb(236, 209, 183);
+}
+
+#mybtn:hover {
+    color: rgb(17, 94, 94);
+    background-color: rgb(236, 209, 183);
+}
+
+.navbar-brand,
+.navbar-toggler {
+    color: rgb(236, 209, 183)!important;
+}
+
+.nav-item>.nav-link.active,
+.nav-link {
+    color: rgb(236, 209, 183)!important;
+}
