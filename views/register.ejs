@@ -1,9 +1,18 @@
 <%-include('./partials/header') %>
-    <h1>Sign up form</h1>
-    <form action="/register" method="POST">
-        <input type="text" name="username" id="" placeholder="username">
-        <input type="password" name="password" id="" placeholder="password">
-        <input type='submit' value='Submit'>
-    </form>
+    <h1 class="text-center mt-5" id="mycol">Sign up</h1>
+    <div class="w-50 mx-auto">
+
+        <form action="/register" method="POST">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="password" id="exampleInputPassword1">
+            </div>
+            <input type='submit' class="btn btn-outline-success" id="mybtn" value='Submit'>
+        </form>
+    </div>
 
     <%-include('./partials/footer') %>

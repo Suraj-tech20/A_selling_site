@@ -46,6 +46,10 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.get('/', (req, res) => {
+    res.redirect("/products");
+});
+
 app.use('/products', productRoutes);
 app.use('/products/:id/comments', commentRoutes);
 app.use(indexRoutes);
