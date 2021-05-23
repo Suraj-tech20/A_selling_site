@@ -1,0 +1,27 @@
+<%-include('../partials/header') %>
+    <h1 class="text-center mt-5" id="mycol">
+        Edit
+        <%= product.name %>
+    </h1>
+    <div class="mx-auto w-50">
+        <form action="/products/<%= product._id %>?_method=PUT" method="post">
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input class="form-control" type="text" name="product[name]" value="<%= product.name %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input class="form-control" type="number" name="product[price]" value="<%= product.price %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Image url</label>
+                <input class="form-control" type="text" name="product[url]" value="<%= product.url %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" name="product[description]" id="" cols="30" rows="10"><%= product.description %></textarea>
+            </div>
+            <input class="btn btn-outline-danger" id="mybtn" type="submit" value="Submit">
+        </form>
+    </div>
+    <%-include('../partials/footer') %>

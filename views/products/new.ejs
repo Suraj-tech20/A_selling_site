@@ -1,0 +1,26 @@
+<%-include('../partials/header') %>
+    <h1 class="text-center mt-5" id="mycol">
+        Add new one
+    </h1>
+    <div class="mx-auto w-50">
+        <form action="/products" method="post">
+            <div class="mb-3">
+                <label class="form-label">Name or Title</label>
+                <input class="form-control" type="text" name="product[name]" placeholder="Name or Title">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input class="form-control" type="number" name="product[price]" placeholder="price">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Image url</label>
+                <input class="form-control" type="text" name="product[url]" placeholder="image url">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" name="product[description]" id="" cols="30" rows="10" placeholder="Details about product"></textarea>
+            </div>
+            <input class="btn btn-outline-danger" id="mybtn" type="submit" value="Submit">
+        </form>
+    </div>
+    <%-include('../partials/footer') %>

@@ -1,0 +1,66 @@
+<%-include('../partials/header') %>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <li class="list-group-item">Phone number</li>
+                    <li class="list-group-item">Email</li>
+                    <li class="list-group-item">Address</li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <img class="img-fluid card-img-top" src="<%= product.url %>" alt="">
+                    <div class="card-body">
+                        <h5 class="float-end">₹
+                            <%= product.price %>
+                        </h5>
+                        <h5 class="card-title" id="mycol">
+                            <a href="" class="card-link text-decoration-none">
+                                <%= product.name.toUpperCase()%>
+                            </a>
+                            <p class="card-text">
+                                <%- product.description %>
+                            </p>
+                            <p class="card-text"><em>Submitted by </em>
+                                <%= product.author.username %>
+                            </p>
+                            <!-- this currentUser is come from app.js where we set res.local.currentUser() -->
+                            <% if(currentUser && product.author.id.equals(currentUser._id)){ %>
+                                <div class="card-link float-start me-2">
+                                    <a class="btn btn-success btn-sm" href="/products/<%=product._id%>/edit">Edit</a>
+                                </div>
+                                <form class="" action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-warning btn-sm card-link">DELETE</button>
+                                </form>
+                                <% } %>
+                        </h5>
+                    </div>
+                </div><br>
+                <div class="border border-secondary rounded bg-light p-3">
+                    <div class="text-end mb-4">
+                        <a href="/products/<%= product.id %>/comments/new" class="btn btn-success">Add comment</a>
+                    </div>
+                    <% product.comments.forEach(function(comment){ %>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong><%= comment.author.username %></strong>
+                                <span class="float-end">10 days ago</span>
+                                <p>
+                                    <%= comment.text %>
+                                </p>
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                    <a href="/products/<%= product.id %>/comments/<%= comment._id %>/edit" class="btn btn-info btn-sm float-start me-2">Edit</a>
+                                    <form action="/products/<%= product.id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+        </div>
+        <a class="text-decoration-none" href="/product">Go Back</a>
+    </div>
+    <%-include('../partials/footer') %>

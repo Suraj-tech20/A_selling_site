@@ -1,0 +1,11 @@
+<%-include('../partials/header') %>
+    <h2 class="text-center my-5" id="mycol">Add new comment</h2>
+    <div class="mx-auto w-50">
+        <form action="/products/<%=product._id %>/comments" method="post">
+            <div class="mb-3">
+                <input class="form-control" type="text" name="comment[text]" placeholder="Enter comments">
+            </div>
+            <input class="btn btn-outline-danger" id="mybtn" type="submit" value="Submit">
+        </form>
+    </div>
+    <%-include('../partials/footer') %>
