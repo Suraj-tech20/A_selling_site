@@ -28,13 +28,14 @@
 }
 
 #mybtn {
-    color: rgb(236, 209, 183);
-    border-color: rgb(236, 209, 183);
+    color: rgb(245, 160, 78);
+    border-color: rgb(245, 160, 78);
 }
 
 #mybtn:hover {
     color: rgb(17, 94, 94);
-    background-color: rgb(236, 209, 183);
+    border-color: rgb(17, 94, 94);
+    background-color: rgb(245, 160, 78);
 }
 
 .navbar-brand,
