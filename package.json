@@ -2,9 +2,9 @@
     "name": "a-selling_site",
     "version": "1.0.0",
     "description": "A site where buyer and seller can direct each other.",
-    "main": "app.js",
+    "main": "server.js",
     "scripts": {
-        "start": "node app.js"
+        "start": "node server.js"
     },
     "author": "Suraj",
     "license": "ISC",
