@@ -54,6 +54,7 @@ app.use('/products', productRoutes);
 app.use('/products/:id/comments', commentRoutes);
 app.use(indexRoutes);
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
     console.log("A selling is open");
 });
