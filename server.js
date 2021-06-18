@@ -15,7 +15,7 @@ const productModel = require("./models/products"),
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
-const mongoDbURL = process.env.MONGODB_URL || 'mongodb://localhost/ASellingSite';
+const mongoDbURL = process.env.MONGODB_URL || 'mongodb://localhost:27017/ASellingSite';
 mongoose.connect(mongoDbURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(express.static(__dirname + '/public'));
