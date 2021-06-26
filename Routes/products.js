@@ -9,7 +9,8 @@ const express = require("express"),
 router.get("/", (req, res) => {
     productModel.find({}, (err, allproducts) => {
         if (err) {
-            console.log(err);
+            // console.log(err);
+            req.flash("error", "something went wrong");
             res.send('err');
         } else {
             res.render("products/products", {

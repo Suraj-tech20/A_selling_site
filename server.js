@@ -3,6 +3,7 @@ const express = require("express"),
     bodyparser = require("body-parser"),
     methodOveride = require("method-override"),
     path = require('path'),
+    flash = require("connect-flash"),
     mongoose = require("mongoose");
 
 const passport = require("passport"),
@@ -15,13 +16,15 @@ const productModel = require("./models/products"),
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
-mongoose.connect("mongodb://localhost/ASellingSite", { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoDbURL = process.env.MONGODB_URL || 'mongodb://localhost:27017/ASellingSite';
+mongoose.connect(mongoDbURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(methodOveride('_method'));
 app.set('views', path.join(__dirname, '/views'));
+app.use(flash());
 
 const productRoutes = require("./Routes/products");
 const commentRoutes = require('./Routes/comments');
@@ -43,6 +46,8 @@ passport.deserializeUser(User.deserializeUser());
 //Use this currentuser for all routes
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 
@@ -54,6 +59,7 @@ app.use('/products', productRoutes);
 app.use('/products/:id/comments', commentRoutes);
 app.use(indexRoutes);
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
     console.log("A selling is open");
 });

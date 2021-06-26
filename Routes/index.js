@@ -1,6 +1,7 @@
 const express = require('express'),
     router = express.Router(),
     passport = require('passport'),
+    alert = require('alert'),
     User = require('../models/User');
 
 router.get('/register', (req, res) => {
@@ -10,10 +11,11 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
     User.register(new User({ username: req.body.username }), req.body.password, function(err, user) {
         if (err) {
-            console.log(err);
+            req.flash("error", err.message);
             return res.render('register');
         }
         passport.authenticate('local')(req, res, function() {
+            req.flash("success", "Welcome to TheSpot," + user.username);
             res.redirect('/products');
         });
     });
@@ -30,6 +32,7 @@ router.post('/login', passport.authenticate('local', {
 
 router.get('/logout', function(req, res) {
     req.logOut();
+    req.flash("success", "successfully logout");
     res.redirect('/products');
 });
 
