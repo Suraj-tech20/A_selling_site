@@ -19,7 +19,7 @@ router.get("/new", middleware.isLoggedIn, (req, res) => {
 router.post('/', middleware.isLoggedIn, (req, res) => {
     productModel.findById(req.params.id, function(err, product) {
         if (err) {
-            console.log('err');
+            // console.log('err');
             req.flash("error", "Product does not exits");
             res.redirect('/products');
         } else {
@@ -32,7 +32,7 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
             newcomment.author = author;
             commentModel.create(newcomment, (err, comment) => {
                 if (err) {
-                    console.log(err);
+                    // console.log(err);
                     req.flash("error", "Something is went wrong");
                     res.redirect("/products");
                 } else {
@@ -61,7 +61,7 @@ router.get('/:_id/edit', middleware.checkcommentOwnership, (req, res) => {
 router.put('/:_id', middleware.checkcommentOwnership, (req, res) => {
     commentModel.findByIdAndUpdate(req.params._id, req.body.comment, function(err, comment) {
         if (err) {
-            console.log(err);
+            // console.log(err);
             res.redirect("/products/" + req.params.id + "/edit");
         } else {
             req.flash("success", "Successfully editted the comment");
