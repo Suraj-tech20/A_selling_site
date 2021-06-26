@@ -7,6 +7,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
+    req.flash("error", "Please Login");
     res.redirect('/login');
 }
 
@@ -25,6 +26,7 @@ middlewareObj.checkcommentOwnership = function(req, res, next) {
             }
         });
     } else {
+        req.flash("error", "Please Login")
         res.redirect('/login');
     }
 }
@@ -44,6 +46,7 @@ middlewareObj.checkproductsOwnership = function(req, res, next) {
             }
         });
     } else {
+        req.flash("error", "Please Login")
         res.redirect('/login');
     }
 }

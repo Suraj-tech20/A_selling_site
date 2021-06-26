@@ -1,7 +1,6 @@
 const express = require('express'),
     router = express.Router(),
     passport = require('passport'),
-    alert = require('alert'),
     User = require('../models/User');
 
 router.get('/register', (req, res) => {
@@ -12,7 +11,8 @@ router.post('/register', (req, res) => {
     User.register(new User({ username: req.body.username }), req.body.password, function(err, user) {
         if (err) {
             req.flash("error", err.message);
-            return res.render('register');
+            // return res.render('register');
+            res.redirect('/register');
         }
         passport.authenticate('local')(req, res, function() {
             req.flash("success", "Welcome to TheSpot," + user.username);
