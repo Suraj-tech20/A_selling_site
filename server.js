@@ -3,6 +3,7 @@ const express = require("express"),
     bodyparser = require("body-parser"),
     methodOveride = require("method-override"),
     path = require('path'),
+    flash = require("connect-flash"),
     mongoose = require("mongoose");
 
 const passport = require("passport"),
@@ -23,6 +24,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(methodOveride('_method'));
 app.set('views', path.join(__dirname, '/views'));
+app.use(flash());
 
 const productRoutes = require("./Routes/products");
 const commentRoutes = require('./Routes/comments');
@@ -44,6 +46,8 @@ passport.deserializeUser(User.deserializeUser());
 //Use this currentuser for all routes
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 
