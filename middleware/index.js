@@ -15,7 +15,7 @@ middlewareObj.checkcommentOwnership = function(req, res, next) {
     if (req.isAuthenticated()) {
         comment.findById(req.params._id, (err, foundcomment) => {
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.redirect('back');
             } else {
                 if (foundcomment.author.id.equals(req.user._id))
@@ -35,7 +35,7 @@ middlewareObj.checkproductsOwnership = function(req, res, next) {
     if (req.isAuthenticated()) {
         products.findById(req.params.id, (err, product) => {
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.redirect('back');
             } else {
                 if (product.author.id.equals(req.user._id))
